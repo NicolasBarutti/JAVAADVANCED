@@ -8,7 +8,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "EMPLOYEES")
 @NoArgsConstructor
-@AllArgsConstructor
 public class Employee {
 
     @Id
