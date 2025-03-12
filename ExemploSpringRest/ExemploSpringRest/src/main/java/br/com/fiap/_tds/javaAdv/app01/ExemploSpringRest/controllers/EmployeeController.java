@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/employee")
 @AllArgsConstructor
 public class EmployeeController {
 
@@ -48,5 +48,16 @@ public class EmployeeController {
     @GetMapping("/hello")
     public ResponseEntity<String> helloWorld(){
         return new ResponseEntity<String>("Hello world", HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee){
+        Employee dbEmployee = this.service.getById(id);
+        if(dbEmployee != null){
+            Employee updatedEmployee = this.service.update(employee);
+            return ResponseEntity.ok(updatedEmployee);
+//            return new ResponseEntity<>(updatedEmployee, HttpStatus.OK); // um jeito
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

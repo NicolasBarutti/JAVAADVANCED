@@ -1,0 +1,5 @@
+wget --method=POST --header="Content-Type: application/json" --body-data='{"id":6,"name":"Employee6","role":"production6","department":"production"}'http://localhost:8080/api/employee
+
+// Create
+curl -X POST http://localhost:8080/api/employee -H "Content-Type: application/json" -d "{\"id\":8,\"name\":\"Employee8\",\"role\":\"production8\",\"department\":\"production\"}"
+
